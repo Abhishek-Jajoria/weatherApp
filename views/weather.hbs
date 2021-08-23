@@ -1,0 +1,77 @@
+{{>top}}
+{{>navbar}}
+<!-- main -->
+<main class="container h-75">
+    <section class="my-5 h-100 bg-dark border border-3 border-warning rounded-5 text-white">
+        <div class="h-75 p-3 p-sm-4 p-md-5 d-flex flex-column align-items-center">
+            <form class="col-12 col-md-10 col-lg-8 col-xl-6 btn-group mb-5 bg-dark border border-3 border-warning rounded-5 d-flex flex-column d-sm-inline-flex flex-sm-row" role="group">
+                <div class="form-floating w-100">
+                    <input type="text" class="form-control bg-dark border-0 text-warning"
+                        id="cityName" placeholder="Enter your city name">
+                    <label for="cityName" autocomplete="off">Enter your city name</label>
+                </div>
+                <button id="submitBtn" type="submit" class="btn btn-outline-warning border-0 fw-bolder">Search</button>
+            </form>
+            <div class="card border-warning mb-3 bg-dark border-3 rounded-5 col-12 col-md-10 col-lg-8 col-xl-6">
+                <div class="card-header border-bottom  border-secondary d-flex  justify-content-between p-3">
+                    <span id="day" ></span>
+                    <div>
+                        <span id="today_date"></span>
+                        <span id="today_month"></span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p id="city_name"  class="card-text"></p>
+                    <h5  class="card-title display-1 data_hide d-flex justify-content-evenly">
+                        <p><span id="temp"></span><sup>o</sup>C</p>
+                        <i id="temp-status" class=""></i>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<script>
+    const getCurrentDay = () => {
+        let weekday = new Array(7);
+        weekday[0] = "Sunday";
+        weekday[1] = "Monday";
+        weekday[2] = "Tuesday";
+        weekday[3] = "Wednesday";
+        weekday[4] = "Thusday";
+        weekday[5] = "Friday";
+        weekday[6] = "Saturday";
+
+        let month = new Array(7);
+        month[0] = "Jan";
+        month[1] = "Feb";
+        month[2] = "Mar";
+        month[3] = "Apr";
+        month[4] = "May";
+        month[5] = "Jun";
+        month[6] = "Jul";
+        month[7] = "Aug";
+        month[8] = "Sep";
+        month[9] = "Oct";
+        month[10] = "Nov";
+        month[11] = "Dec";
+
+        let currentTime = new Date();
+
+        let today_date = document.getElementById('today_date');
+        today_date.innerText = currentTime.getDate();
+
+
+        let today_month = document.getElementById('today_month');
+        let date = currentTime.getDate();
+        let months = month[currentTime.getMonth()];
+        today_month.innerText = months;
+
+        let days = weekday[currentTime.getDay()];
+        let day = document.getElementById('day');
+        day.innerText = days;
+    }
+    getCurrentDay();
+</script>
+{{>footer}}
+{{>bottom}}
